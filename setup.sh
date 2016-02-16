@@ -10,7 +10,11 @@ git clone -b $BRANCH_NAME $COURSE_REPO
 
 echo "--- Clone graded tests"
 
-git submodule add $GRADING_TESTS_REPO test
+cd src/test
+
+git clone -b $BRANCH_NAME $GRADING_TESTS_REPO
+
+cd ../..
 
 echo "+++ Make sure directory structure is correct"
 
