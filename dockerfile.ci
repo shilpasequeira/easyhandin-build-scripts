@@ -1,0 +1,3 @@
+FROM maven
+MAINTAINER Shilpa Sequeira "mail@shilpasequeira.com"
+RUN echo "Hello docker!"
