@@ -1,7 +1,5 @@
 #!/bin/bash
 
-env
-
 set -eo pipefail
 
 rm -rf assignment
@@ -23,6 +21,9 @@ cd ../..
 echo "+++ Make sure directory structure is correct"
 
 ls -al
+
+docker build -t docker_image_${BUILDKITE_JOB_ID} .
+
 
 
 
