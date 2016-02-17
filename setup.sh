@@ -6,13 +6,15 @@ set -eo pipefail
 
 echo "--- Clone student assignment branch"
 
-git clone -b $BRANCH_NAME $COURSE_REPO .
+git clone -b $BRANCH_NAME $COURSE_REPO assignment
 
 echo "--- Clone graded tests"
 
-cd src/test
+cd assignment/src
 
-git clone -b $BRANCH_NAME $GRADING_TESTS_REPO .
+rm -rf test
+
+git clone -b $BRANCH_NAME $GRADING_TESTS_REPO test
 
 cd ../..
 
