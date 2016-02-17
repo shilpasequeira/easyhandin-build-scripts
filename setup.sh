@@ -4,6 +4,8 @@ env
 
 set -eo pipefail
 
+rm -rf assignment
+
 echo "--- Clone student assignment branch"
 
 git clone -b $BRANCH_NAME $COURSE_REPO assignment
