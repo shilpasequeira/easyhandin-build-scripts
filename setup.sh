@@ -18,12 +18,9 @@ git clone -b $BRANCH_NAME $GRADING_TESTS_REPO test
 
 cd ../..
 
-echo "+++ Make sure directory structure is correct"
+echo "+++ Create container and run test"
 
-ls -al
-
-docker build -t docker_image_${BUILDKITE_JOB_ID} .
-
+docker run -v ${BUILDKITE_BUILD_CHECKOUT_PATH}/assignment/:${BUILDKITE_BUILD_CHECKOUT_PATH}/assignment/ -w ${BUILDKITE_BUILD_CHECKOUT_PATH}/assignment/ --rm -i -t maven mvn clean test
 
 
 
