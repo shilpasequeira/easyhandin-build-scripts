@@ -2,6 +2,9 @@
 
 set -eo pipefail
 
+echo "--- Env"
+env
+
 echo "--- Docker daemon status"
 
 service docker status
