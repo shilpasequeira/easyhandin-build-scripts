@@ -2,6 +2,10 @@
 
 set -eo pipefail
 
+echo "--- Docker daemon status"
+
+service docker status
+
 rm -rf assignment
 
 echo "--- Clone student assignment branch"
