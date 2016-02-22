@@ -2,11 +2,13 @@
 
 set -eo pipefail
 
+echo "--- ID"
+id
+
 echo "--- Env"
 env
 
 echo "--- Docker daemon status"
-
 service docker status
 
 rm -rf assignment
