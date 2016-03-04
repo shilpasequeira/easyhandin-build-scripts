@@ -23,9 +23,8 @@ do
    echo $BRANCH_NAME $element
    git clone -b $BRANCH_NAME $element
 done
-
 ls
-
+cd ..
 ruby mosstest.rb
 
-cd ..
+
