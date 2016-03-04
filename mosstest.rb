@@ -3,7 +3,6 @@
 
 require 'moss_ruby'
 require 'find'
-require 'launchy'
 
 # Create the MossRuby object
 moss = MossRuby.new(432822968) #replace 000000000 with your user id
