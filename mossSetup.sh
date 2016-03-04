@@ -12,7 +12,7 @@ cd assignment
 
 IFS=',' read -r -a repoArray <<< $STUDENTS_REPOS
 
-echo ${repoArrayp[0] repoArray[1]}
+echo ${repoArray[0] repoArray[1]}
 
 for element in $repoArray
 do
