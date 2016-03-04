@@ -25,7 +25,7 @@ do
 done
 ls
 cd ..
-gem install moss-ruby
+gem install moss_ruby
 ruby mosstest.rb
 
 
