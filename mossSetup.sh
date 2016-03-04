@@ -13,7 +13,7 @@ cd assignment
 echo "here"
 echo $STUDENTS_REPOS
 
-IFS=', ' read -r -a repoArray <<< $STUDENTS_REPOS
+IFS=',' read -r -a repoArray <<< $STUDENTS_REPOS
 
 echo ${repoArray[0] repoArray[1]}
 
