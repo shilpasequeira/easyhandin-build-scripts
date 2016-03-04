@@ -3,6 +3,7 @@
 
 require 'moss_ruby'
 require 'find'
+require 'launchy'
 
 # Create the MossRuby object
 moss = MossRuby.new(432822968) #replace 000000000 with your user id
@@ -40,5 +41,7 @@ results = moss.extract_results url
 
 # Use results
 puts "Got results from #{url}"
+
+Launchy.open(url)
 
 
