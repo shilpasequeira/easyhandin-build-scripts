@@ -2,6 +2,7 @@
 
 set -eo pipefail
 
+
 echo "--- Delete old assignment folder"
 rm -rf assignment
 
@@ -10,12 +11,12 @@ mkdir assignment
 
 cd assignment
 
-echo "here"
-echo $STUDENTS_REPOS
+IFS=",";
 
-IFS=',' read -r -a repoArray <<< $STUDENTS_REPOS
+repoArray=($STUDENTS_REPOS)
 
-echo ${repoArray[0] repoArray[1]}
+echo ${repoArray[0]}
+echo ${repoArray[1]}
 
 for element in $repoArray
 do
@@ -29,4 +30,3 @@ ls
 ruby mosstest.rb
 
 cd ..
-
