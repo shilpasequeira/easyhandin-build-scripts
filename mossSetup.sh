@@ -9,4 +9,8 @@ do
    git clone -b $BRANCH_NAME element
 done
 
-./moss.rb
+git clone https://github.com/shilpasequeira/easyhandin-build-scripts.git
+
+cd easyhandin-build-scripts
+
+ruby moss.rb

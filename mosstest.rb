@@ -18,31 +18,16 @@ moss.options[:language] = "java"
 # Create a file hash, with the files to be processed
 
 
-
 to_check = MossRuby.empty_file_hash
 
-ARGV.each do|a|
-    MossRuby.add_file(to_check, a)
+java_file_paths = []
+Find.find(Dir.pwd) do |path|
+    java_file_paths << path if path =~ /.*\.java$/
 end
 
-
-
-#assignments = ENV[ASSIGNMENTS_PATH]
-#baseFile = ENV[BASEFILE_PATH]
-
-#add to the base file
-#if (baseFile != nil)
-#   MossRuby.add_base_file(to_check, baseFile)
-#end
-
-#assignmentsArray = assignments.split(/\s*,\s*/)
-
-#if (assignmentsArray != nil)
-#    assignmentsArray.each do |a|
-#        puts a
-#        MossRuby.add_file(to_check, a)
-#    end
-#end
+java_file_paths.each do|a|
+    MossRuby.add_file(to_check, a)
+end
 
 
 # Get server to process files
@@ -55,12 +40,5 @@ results = moss.extract_results url
 
 # Use results
 puts "Got results from #{url}"
-i = 0
-results.each { |match|
-    match.each { |file|
-        logfile = File.new("results_" + i.to_s + ".html", 'w')
-        logfile.puts "#{file[:filename]} #{file[:pct]} #{file[:html]}"
-        i = i + 1
-    }
-}
+
 
