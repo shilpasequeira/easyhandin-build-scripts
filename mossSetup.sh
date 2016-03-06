@@ -11,6 +11,7 @@ mkdir assignment
 
 cd assignment
 
+echo "--- Iterate over student repos"
 IFS=",";
 
 repoArray=($STUDENTS_REPOS)
@@ -23,8 +24,10 @@ do
    echo $BRANCH_NAME $element
    git clone -b $BRANCH_NAME $element
 done
-ls
+
 cd ..
+
+echo "--- Run mosstest ruby file"
 ruby mosstest.rb
 
 
