@@ -39,8 +39,5 @@ url = moss.check to_check
 results = moss.extract_results url
 
 # Use results
-puts "Got results from #{url}"
-
-Launchy.open(url)
-
+puts url
 
