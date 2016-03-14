@@ -27,18 +27,16 @@ echo ${repoArray[1]}
 echo ${SHAarray[0]}
 echo ${SHAarray[1]}
 
-#length of repos is:
-length=${#repoArray[@]}
-echo "length1 is: "$length
-#length of shas is:
-length2=${#SHAarray[@]}
-echo "length2 is: "$length2
+repoLength=${#repoArray[@]}
+shalength=${#SHAarray[@]}
 
-for (( i=0; i<length; i++ ))
+for (( i=0; i<repoLength; i++ ))
 do
-    git clone -o ${SHAarray[i]} ${repoArray[i]}
+    git clone -b $BRANCH_NAME ${repoArray[i]} student_$i
+    cd student_$i
+    git reset --hard ${SHAarray[i]}
+    cd ..
 done
-
 
 
 cd ..
