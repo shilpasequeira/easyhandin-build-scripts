@@ -36,12 +36,10 @@ echo "length2 is: "$length2
 
 for (( i=0; i<length; i++ ))
 do
-    echo $BRANCH_NAME ${repoArray[i]}
-    git clone -b $BRANCH_NAME ${repoArray[i]}
-    # reset this repository's master branch to the commit of interest
-    git reset --hard ${SHAarray[i]}
-    #git checkout HEAD -- <path>
+    git clone -o ${SHAarray[i]} ${repoArray[i]}
 done
+
+
 
 cd ..
 
