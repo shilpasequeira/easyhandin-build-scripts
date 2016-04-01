@@ -22,7 +22,7 @@ to_check = MossRuby.empty_file_hash
 java_file_paths = []
 Find.find(Dir.pwd) do |path|
      if path =~ /.*\.java$/
-         path.slice!(Dir.pwd + "/")
+         path.slice!(Dir.pwd+ "/")
         java_file_paths << path
     end
 end

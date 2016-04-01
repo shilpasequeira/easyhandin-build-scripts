@@ -3,14 +3,8 @@
 set -eo pipefail
 
 
-echo "--- Delete old assignment folder"
+echo "--- Delete old assignments folders"
 rm -rf */
-#rm -rf $COURSE_NAME
-
-echo "--- Create assignment folder"
-mkdir $COURSE_NAME
-
-cd $COURSE_NAME
 
 echo "--- Iterate over student repos"
 IFS=",";
@@ -39,9 +33,6 @@ do
     git reset --hard ${SHAarray[i]}
     cd ..
 done
-
-
-cd ..
 
 echo "--- Run mosstest ruby file"
 ruby mosstest.rb
