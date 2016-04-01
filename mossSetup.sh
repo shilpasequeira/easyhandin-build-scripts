@@ -4,8 +4,8 @@ set -eo pipefail
 
 
 echo "--- Delete old assignment folder"
-rm -rf assignment
-rm -rf $COURSE_NAME
+rm -rf */
+#rm -rf $COURSE_NAME
 
 echo "--- Create assignment folder"
 mkdir $COURSE_NAME
