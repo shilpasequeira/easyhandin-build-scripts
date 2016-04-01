@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-
+puts "--- Moss process started"
 require 'moss_ruby'
 require 'find'
 
@@ -17,12 +17,14 @@ moss.options[:language] = "java"
 
 # Create a file hash, with the files to be processed
 
-
 to_check = MossRuby.empty_file_hash
 
 java_file_paths = []
 Find.find(Dir.pwd) do |path|
-    java_file_paths << path if path =~ /.*\.java$/
+     if path =~ /.*\.java$/
+         path.slice!(Dir.pwd + "/")
+        java_file_paths << path
+    end
 end
 
 java_file_paths.each do|a|
@@ -32,8 +34,6 @@ end
 
 # Get server to process files
 url = moss.check to_check
-
-
 
 # Get results
 results = moss.extract_results url
