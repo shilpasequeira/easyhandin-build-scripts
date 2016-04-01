@@ -13,7 +13,7 @@ moss.options[:directory_submission] =  true
 moss.options[:show_num_matches] = 250
 moss.options[:experimental_server] =    false
 moss.options[:comment] = ""
-moss.options[:language] = "java"
+moss.options[:language] = ENV["LANGUAGE"]
 
 # Create a file hash, with the files to be processed
 
