@@ -14,6 +14,7 @@ moss.options[:show_num_matches] = 250
 moss.options[:experimental_server] =    false
 moss.options[:comment] = ""
 moss.options[:language] = ENV["LANGUAGE"]
+baseFile = ENV["BASEFILE"]
 
 # Create a file hash, with the files to be processed
 
@@ -25,6 +26,11 @@ Find.find(Dir.pwd) do |path|
          path.slice!(Dir.pwd+ "/")
         java_file_paths << path
     end
+end
+
+#add to the base file
+if (baseFile != nil)
+   MossRuby.add_base_file(to_check, baseFile)
 end
 
 java_file_paths.each do|a|
