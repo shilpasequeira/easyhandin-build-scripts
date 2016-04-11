@@ -9,36 +9,30 @@ moss = MossRuby.new(432822968) #replace 000000000 with your user id
 
 # Set options  -- the options will already have these default values
 moss.options[:max_matches] = 10
-moss.options[:directory_submission] =  true
+moss.options[:directory_submission] = true
 moss.options[:show_num_matches] = 250
-moss.options[:experimental_server] =    false
+moss.options[:experimental_server] = false
 moss.options[:comment] = ""
 moss.options[:language] = ENV["LANGUAGE"]
-skeleton_code = ENV["BASEFILE"]
 file_extension = ENV["FILE_EXTENSION"]
 
 
 # Create a file hash, with the files to be processed
-
 to_check = MossRuby.empty_file_hash
 
-java_file_paths = []
 Find.find(Dir.pwd) do |path|
-    if path =~ /.*\.#{file_extension}$/
-         path.slice!(Dir.pwd+ "/")
-        java_file_paths << path
-    end
+  if path =~ /.*\.#{file_extension}$/
+    path.slice!(Dir.pwd+ "/")
+    MossRuby.add_file(to_check, path)
+  end
 end
 
-#add to the base file
-if (skeleton_code != nil)
-   MossRuby.add_base_file(to_check, skeleton_code)
+Find.find("skeletonFolder") do |path|
+  if path =~ /.*\.#{file_extension}$/
+    path.slice!(Dir.pwd+ "/")
+    MossRuby.add_base_file(to_check, path)
+  end
 end
-
-java_file_paths.each do|a|
-    MossRuby.add_file(to_check, a)
-end
-
 
 # Get server to process files
 url = moss.check to_check

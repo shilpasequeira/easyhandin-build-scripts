@@ -5,23 +5,24 @@ set -eo pipefail
 echo "--- Delete old assignments folders"
 rm -rf */
 
+echo "--- cloning skeleton code"
+git clone -b $BRANCH_NAME $SKELETON_REPO skeletonFolder
+
+echo "--- Getting the repositories and SHAs from easyhandin"
+submission_repo_sha="`wget -qO- $SUBMISSION_URL`"
+count=$(echo $submission_repo_sha | jq "length")
+
 echo "--- Iterate over student repos"
-IFS=",";
-
-count=$(jq '.students | length' json.txt)
-
-for((i=0;i<$count;i++))
-do
-    repo=$(cat json.txt | jq --raw-output '.students['${i}'].repo')
-    SHA=$(cat json.txt | jq --raw-output '.students['${i}'].sha')
+for((i=0; i<count; i++))
+ do
+    repo=$(echo $submission_repo_sha | jq --raw-output '.['${i}'].repo')
+    Sha=$(echo $submission_repo_sha | jq --raw-output '.['${i}'].sha')
     git clone -b $BRANCH_NAME $repo
     folder=$(basename $repo .git)
     cd $folder
-    git reset --hard $SHA
+    git reset --hard $Sha
     cd ..
 done
 
 echo "--- Run mosstest ruby file"
 ruby mosstest.rb
-
-
