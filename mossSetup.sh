@@ -9,7 +9,9 @@ echo "--- cloning skeleton code"
 git clone -b $BRANCH_NAME $SKELETON_REPO skeletonFolder
 
 echo "--- Getting the repositories and SHAs from easyhandin"
-submission_repo_sha="`wget -qO- $SUBMISSION_URL`"
+#submission_repo_sha="`wget -qO- $SUBMISSION_URL`"
+submission_repo_sha=$SUBMISSION_JSON
+
 count=$(echo $submission_repo_sha | jq "length")
 
 echo "--- Iterate over student repos"
