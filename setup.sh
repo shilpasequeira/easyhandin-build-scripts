@@ -14,6 +14,7 @@ git reset --hard $SHA
 
 echo "--- Clone graded tests"
 cd src
+rm -rf test
 git clone -b $BRANCH_NAME $GRADING_TESTS_REPO test
 
 cd ../..
