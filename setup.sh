@@ -16,7 +16,9 @@ rm -rf test
 echo "--- Clone graded tests"
 git clone -b $BRANCH_NAME $GRADING_TESTS_REPO test
 
-cd ../..
+cd test
+git reset --hard $SHA
+cd ../../..
 
 echo "+++ Create container and run test"
 docker run -u=$UID -v ${BUILDKITE_BUILD_CHECKOUT_PATH}/assignment/:${BUILDKITE_BUILD_CHECKOUT_PATH}/assignment/ -w ${BUILDKITE_BUILD_CHECKOUT_PATH}/assignment/ --rm -i -t maven mvn clean test
